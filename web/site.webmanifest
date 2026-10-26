@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "Joboard",
+  "short_name": "Joboard",
+  "description": "Suivi de vos candidatures et de votre recherche d'emploi",
+  "lang": "fr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#13786f",
+  "background_color": "#f6f6f7",
+  "icons": [
+    {"src": "/assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "/assets/brand/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

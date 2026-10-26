@@ -1,0 +1,73 @@
+# Configuration personnelle ; seul le modèle neutre est public
+/config.json
+/config.*.json
+!/config.example.json
+.env
+.env.*
+!.env.example
+
+# Identifiants et clés privées (à toute profondeur)
+credentials*.json
+.credentials*.json
+token.json
+token-*.json
+*-token.json
+service_account*.json
+service-account*.json
+client_secret*.json
+auth.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Notes, calendrier, conversations et pièces jointes
+joboard-donnees/
+assistant-ia/
+outlook-ics.json
+
+# Cache de logos généré depuis le Sheet personnel (révèle les entreprises suivies)
+/web/assets/company-logos.json
+/web/assets/companies/
+/tools/company-aliases.json
+
+# Python : environnements, caches et rapports
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+
+# Compilations, exécutables et captures de tests
+build/
+dist/
+dist-nouveau/
+*.spec
+*.exe
+*.log
+*.tmp
+
+# Assistants et ressources de travail locales
+.agents/
+.claude/
+.codex/
+.impeccable/
+/skills-lock.json
+/design/
+
+# Éditeurs et système
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo

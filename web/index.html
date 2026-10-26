@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="sc-token" content="{{SC_TOKEN}}" />
+    <meta name="sc-session" content="{{SC_SESSION}}" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="application-name" content="Joboard" />
+    <meta name="theme-color" content="#13786f" />
+    <meta
+      name="theme-color"
+      content="#09090b"
+      media="(prefers-color-scheme: dark)"
+    />
+    <title>Joboard — Suivi des candidatures</title>
+    <link rel="icon" href="/favicon.ico?v=joboard" />
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script>
+      try {
+        if (localStorage.getItem("sc-side") === "mini")
+          document.documentElement.classList.add("side-mini");
+      } catch (e) {}
+      try {
+        var t = localStorage.getItem("sc-theme");
+        if (t === "light" || t === "dark")
+          document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css"
+    />
+    <link rel="stylesheet" href="/transitions.css" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Aller au contenu</a>
+    <div id="loadbar" class="loadbar" aria-hidden="true"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="Barre latérale">
+      <div class="side-head">
+        <button
+          class="brand"
+          data-act="nav"
+          data-view="accueil"
+          aria-label="Joboard — Accueil"
+        >
+          <span class="logo" aria-hidden="true"></span>
+          <span class="brand-name"
+            ><span class="brand-wordmark" aria-hidden="true"
+              >Joboard</span
+            ></span
+          >
+        </button>
+        <button
+          class="icon-btn side-toggle"
+          data-act="sidebar"
+          title="Réduire / agrandir la barre ( [ )"
+          aria-label="Réduire ou agrandir la barre latérale"
+        >
+          <i class="ph-light ph-sidebar-simple"></i>
+        </button>
+      </div>
+
+      <button
+        class="search-btn"
+        data-act="palette"
+        aria-label="Rechercher ou lancer une action (Ctrl K)"
+      >
+        <i class="ph-light ph-magnifying-glass"></i
+        ><span>Rechercher, agir…</span><kbd>Ctrl K</kbd>
+      </button>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <div class="nav-label">Suivi</div>
+        <button
+          class="nav-item"
+          data-act="nav"
+          data-view="accueil"
+          title="Accueil (1)"
+        >
+          <i class="ph-light ph-squares-four"></i><span>Accueil</span>
+        </button>
+        <button
+          class="nav-item"
+          data-act="nav"
+          data-view="offres"
+          title="Offres (2)"
+        >
+          <i class="ph-light ph-briefcase"></i><span>Offres</span
+          ><em class="nav-badge" data-badge="offres"></em>
+        </button>
+        <button
+          class="nav-item"
+          data-act="nav"
+          data-view="spont"
+          title="Spontanées (3)"
+        >
+          <i class="ph-light ph-paper-plane-tilt"></i><span>Spontanées</span
+          ><em class="nav-badge" data-badge="spont"></em>
+        </button>
+        <button
+          class="nav-item"
+          data-act="nav"
+          data-view="contacts"
+          title="Contacts (4)"
+        >
+          <i class="ph-light ph-users-three"></i><span>Contacts</span
+          ><em class="nav-badge" data-badge="contacts"></em>
+        </button>
+        <button
+          class="nav-item"
+          data-act="nav"
+          data-view="vie"
+          title="Entreprises VIE NY (5)"
+        >
+          <i class="ph-light ph-buildings"></i><span>Entreprises VIE</span
+          ><em class="nav-badge" data-badge="vie"></em>
+        </button>
+        <div class="nav-label">Organisation</div>
+        <button
+          class="nav-item"
+          data-act="nav"
+          data-view="calendrier"
+          title="Calendrier (6)"
+        >
+          <i class="ph-light ph-calendar-blank"></i><span>Calendrier</span
+          ><em class="nav-badge" data-badge="calendrier"></em>
+        </button>
+        <button
+          class="nav-item"
+          data-act="nav"
+          data-view="notes"
+          title="Notes (7)"
+        >
+          <i class="ph-light ph-note"></i><span>Notes</span>
+        </button>
+      </nav>
+
+      <div class="side-foot">
+        <div class="nav-label">Consommation IA</div>
+        <button
+          class="usage-pill"
+          id="usage-pill"
+          data-act="usage"
+          aria-label="Consommation IA"
+          aria-expanded="false"
+          title="Détail de la consommation Claude et ChatGPT"
+        ></button>
+        <div class="side-actions">
+          <button
+            class="icon-btn"
+            data-act="reload"
+            title="Actualiser les données (R)"
+            aria-label="Actualiser"
+          >
+            <i class="ph-light ph-arrows-clockwise"></i>
+          </button>
+          <button
+            class="icon-btn"
+            data-act="theme"
+            title="Mode clair / sombre"
+            aria-label="Changer de thème"
+          >
+            <i class="ph-light ph-circle-half"></i>
+          </button>
+          <a
+            class="icon-btn"
+            href="{{SC_SHEET_URL}}"
+            target="_blank"
+            rel="noopener"
+            title="Ouvrir le Google Sheet"
+            aria-label="Ouvrir le Google Sheet"
+            ><i class="ph-light ph-table"></i
+          ></a>
+          <a
+            class="icon-btn"
+            href="{{SC_DRIVE_URL}}"
+            target="_blank"
+            rel="noopener"
+            title="Ouvrir le Google Drive"
+            aria-label="Ouvrir le Google Drive"
+            ><i class="ph-light ph-google-drive-logo"></i
+          ></a>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" class="main" tabindex="-1">
+      <div class="overview sk-page" aria-busy="true" aria-label="Chargement">
+        <header class="overview-head">
+          <span class="sk-stack"
+            ><span class="skeleton sk-line" style="width: min(240px, 60vw); height: 28px"></span
+            ><span class="skeleton sk-line" style="width: min(320px, 70vw); height: 13px"></span
+          ></span>
+          <span class="skeleton sk-btn"></span>
+        </header>
+        <div class="skeleton" style="height: 96px; border-radius: var(--r-xl)"></div>
+        <div class="overview-grid">
+          <div class="skeleton overview-todos" style="border-radius: var(--r-xl)"></div>
+          <div class="skeleton" style="border-radius: var(--r-xl)"></div>
+          <div class="skeleton" style="border-radius: var(--r-xl)"></div>
+          <div class="skeleton" style="border-radius: var(--r-xl)"></div>
+          <div class="skeleton" style="border-radius: var(--r-xl)"></div>
+        </div>
+      </div>
+    </main>
+
+    <div
+      id="usage-pop"
+      class="popover"
+      hidden
+      role="dialog"
+      aria-label="Consommation IA"
+    ></div>
+    <div id="palette" class="palette" hidden></div>
+    <div id="backdrop" class="backdrop" data-act="close-overlay"></div>
+    <aside
+      id="panel"
+      class="panel"
+      aria-hidden="true"
+      aria-label="Fiche détail"
+    ></aside>
+    <div id="modal" class="modal" hidden></div>
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+
+    <div id="stopped" class="stopped" hidden>
+      <div class="stopped-box">
+        <div class="logo" role="img" aria-label="Joboard"></div>
+        <h2>Application arrêtée</h2>
+        <p>La fenêtre du terminal « Joboard » a été fermée.</p>
+        <p class="muted">
+          Relancez <strong>Joboard.exe</strong> : cette page se
+          rechargera automatiquement.
+        </p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script src="/logos.js"></script>
+    <script type="module">
+      await import("/app.js");
+    </script>
+  </body>
+</html>
